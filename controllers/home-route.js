@@ -1,7 +1,8 @@
 const router = require('express').Router();
 const Post = require('../models/Post');
+const withAuth = require('../utils/auth');
 
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     const postData = await Post.findAll().catch((err) => { 
         res.json(err);
       });
@@ -10,7 +11,7 @@ router.get('/', async (req, res) => {
       });
   
   
-  router.get('/post/:id', async (req, res) => {
+  router.get('/post/:id', withAuth, async (req, res) => {
     try{ 
         const postData = await Post.findByPk(req.params.id);
         if(!postData) {
