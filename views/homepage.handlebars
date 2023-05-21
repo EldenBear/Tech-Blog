@@ -1,5 +1,12 @@
+<script src="/js/home.js"></script>
+
 <div>HomePage</div>
 <h1>Test</h1>
-{{#each posts}}
-<p>{{this.title}}</p>
+{{#each posts as |post| }}
+<div class="post" onclick="onClickPost({{post.id}})">
+<p>{{post.title}}</p>
+<p>{{post.contents}}</p>
+<p>{{post.userName}}</p>
+<p>{{post.date}}</p>
+</div>
 {{/each}}
