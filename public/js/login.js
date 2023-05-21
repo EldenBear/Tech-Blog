@@ -19,6 +19,15 @@ const loginFormHandler = async (event) => {
   }
 };
 
+const createNewAccount = async (event) => {
+  event.preventDefault();
+  document.location.replace('/signup');
+};
+
 document
   .querySelector('.login-form')
   .addEventListener('submit', loginFormHandler);
+
+  document
+  .getElementById('sign-up-btn')
+  .addEventListener('click' , createNewAccount);

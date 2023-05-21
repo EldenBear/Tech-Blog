@@ -2,16 +2,18 @@ const router = require('express').Router();
 const Post = require('../models/Post');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
+router.get('/', async (req, res) => {
     const postData = await Post.findAll().catch((err) => { 
         res.json(err);
       });
         const posts = postData.map((post) => post.get({ plain: true }));
-        res.render('all', { posts });
+        res.render('homepage', { 
+          posts,
+        logged_in: req.session.logged_in, });
       });
   
   
-  router.get('/post/:id', withAuth, async (req, res) => {
+  router.get('/post/:id', async (req, res) => {
     try{ 
         const postData = await Post.findByPk(req.params.id);
         if(!postData) {
@@ -32,6 +34,15 @@ router.get('/', withAuth, async (req, res) => {
     }
   
     res.render('login');
+  });
+
+  router.get('/signup', (req, res) => {
+    if (req.session.logged_in) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('signup');
   });
 
 module.exports = router;

@@ -19,16 +19,12 @@ Comment.init(
     userName: {
         type: DataTypes.STRING,
         allowNull: false,
-        references: {
-            model: "User",
-            key: "userName",
-        }
     },
     userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: "User",
+            model: "user",
             key: "id",
         }
     },
@@ -41,7 +37,7 @@ Comment.init(
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: "Post",
+            model: "post",
             key: "id",
         }
     },
@@ -52,7 +48,6 @@ Comment.init(
     sequelize,
     timestamps: false,
     freezeTableName: true,
-    underscored: true,
     modelName: 'comment',
   }
 );
