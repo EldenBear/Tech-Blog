@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
       });
   
   
-  router.get('/dashboard/:id', async (req, res) => {
+  router.get('/edit/:id', async (req, res) => {
     try{ 
         const postData = await Post.findByPk(req.params.id);
         if(!postData) {
@@ -26,6 +26,14 @@ router.get('/', async (req, res) => {
       } catch (err) {
           res.status(500).json(err);
       };     
+  });
+
+  router.get('/add', async (req, res) => {
+    try{
+        res.render('newPost', {logged_in: req.session.logged_in});
+    } catch (err) {
+        res.status(500).json(err);
+    }
   });
 
 module.exports = router;
