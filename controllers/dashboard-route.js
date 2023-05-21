@@ -10,7 +10,7 @@ router.get('/', async (req, res) => {
         res.json(err);
       });
         const posts = postData.map((post) => post.get({ plain: true }));
-        res.render('all', { posts });
+        res.render('dashboard', { posts,  logged_in: req.session.logged_in, });
       });
   
   
