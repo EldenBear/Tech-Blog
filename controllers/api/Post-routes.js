@@ -24,11 +24,13 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
     try {
+      const date = new Date();
+      const dateString = date.toISOString().split('T')[0];
       const post = await Post.update(
       {
-        title: req.body.title,
-        contents: req.body.contents,
-        date: require.body.date,
+        title: req.body.titleEdit,
+        contents: req.body.contentEdit,
+        date: dateString,
       },
       {
         where: {
@@ -39,6 +41,19 @@ router.put('/:id', async (req, res) => {
     } catch (err) {
         res.status(500).json(err);
       };
+  });
+
+  router.delete('/:id' , async (req, res) => {
+    try{
+      await Post.destroy({
+        where: {
+          id: req.params.id,
+        },
+      });
+      res.status(200).json({});
+    } catch (err) {
+      res.status(500).json(err);
+    }
   });
 
 module.exports = router;
