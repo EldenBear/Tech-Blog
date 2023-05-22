@@ -1,5 +1,5 @@
 const onClickPost = (id) => {
-    document.location.replace(`/dashboard/${id}`)
+    document.location.replace(`/dashboard/edit/${id}`)
 };
 
 const addNewPost = () => {
