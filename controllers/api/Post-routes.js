@@ -7,7 +7,6 @@ router.post('/', async (req, res) => {
     const date = new Date();
     const dateString = date.toISOString().split('T')[0];
     const user = await User.findOne({ where: { id: req.session.user_id }});
-    console.log(req.body);
     const postData = await Post.create({
     title: req.body.postTitle,
     contents: req.body.postContent,
@@ -17,7 +16,6 @@ router.post('/', async (req, res) => {
   });
   res.status(200).json(postData)
 } catch (err) {
-  console.log(err);
   res.status(400).json(err);
 }
 });

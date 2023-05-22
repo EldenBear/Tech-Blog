@@ -1,37 +1,22 @@
 const router = require("express").Router();
 const Comment = require("../../models/Comment");
+const User = require('../../models/User');
 
 router.post("/", async (req, res) => {
   try {
+    const date = new Date();
+    const dateString = date.toISOString().split('T')[0];
+    const user = await User.findOne({ where: { id: req.session.user_id }});
     const commentData = await Comment.create({
-      contents: req.body.contents,
-      userName: req.body.userName,
-      userId: require.body.userId,
-      date: require.body.date,
-      postId: require.body.postId,
+      contents: req.body.comment,
+      userName: user.userName,
+      userId: req.session.user_id,
+      date: dateString,
+      postId: req.body.postId,
     });
     res.status(200).json(commentData);
   } catch (err) {
     res.status(400).json(err);
-  }
-});
-
-router.put("/:id", async (req, res) => {
-  try {
-    const comment = await Comment.update(
-      {
-        contents: req.body.contents,
-        date: require.body.date,
-      },
-      {
-        where: {
-          id: req.params.id,
-        },
-      }
-    );
-    res.status(200).json(comment);
-  } catch (err) {
-    res.status(500).json(err);
   }
 });
 
