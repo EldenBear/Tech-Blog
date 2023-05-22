@@ -1,11 +1,11 @@
 <script src="/js/home.js"></script>
 
-<h1>Test</h1>
 {{#each posts as |post|}}
   <div class="post" onclick="onClickPost({{post.id}})">
-    <p>{{post.title}}</p>
+    <div class="postTitle">
+      <p>{{post.title}}</p>
+      <p>Posted by {{post.userName}} on {{post.date}}</p>
+    </div>
     <p>{{post.contents}}</p>
-    <p>{{post.userName}}</p>
-    <p>{{post.date}}</p>
   </div>
 {{/each}}

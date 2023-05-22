@@ -1,16 +1,23 @@
-<h1>Test</h1>
 <div class="post" id="post">
-  <p>{{post.title}}</p>
-  <p>{{post.contents}}</p>
-  <p>{{post.userName}}</p>
-  <p>{{post.date}}</p>
+  <div class="postTitle">
+      <p>{{post.title}}</p>
+      <p>Posted by {{post.userName}} on {{post.date}}</p>
+    </div>
+    <p>{{post.contents}}</p>
 </div>
 <p id="postId">{{post.id}}</p>
 {{#each comments as |comment|}}
-  <p>{{comment.contents}}</p>
+<div class="commentSection">
+  <div>
+    <div class="commentHeader">
   <p>{{comment.userName}}</p>
   <p>{{comment.date}}</p>
+    </div>
+  <p>{{comment.contents}}</p>
+  </div>
+</div>
 {{/each}}
+<div id="commentSection"></div>
 {{#if logged_in}}
   <button class="btn" id="comment-btn">+Comment</button>
 {{/if}}

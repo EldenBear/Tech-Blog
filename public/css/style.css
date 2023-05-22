@@ -1,0 +1,131 @@
+:root {
+    --primary: #161a1d;
+    --secondary: #660708;
+    --black: #0b090a;
+    --white: #ffffff;
+
+}
+
+.hidden{
+    display: none;
+}
+
+body{
+    margin: 0px;
+    background: var(--black);
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary);
+    color: var(--secondary);
+    border-bottom: 5px solid var(--white);
+    font-size: 34px;
+}
+
+h1{
+    background: var(--black);
+    border: 9px solid var(--white);
+    border-radius: 5px;
+    color: var(--secondary);
+    padding: 12px;
+}
+
+#home-nav, #dashboard-nav, #logout-nav, #login-nav{
+    background: none;
+    border: none;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    font-size: 24px;
+    padding-right: 22px;
+    color: var(--white);
+}
+
+.post{
+    background: var(--primary);
+    color: var(--white);
+    font-size: 19px;
+    border: 3px solid var(--white);
+    margin: 24px;
+    cursor: pointer;
+    border-radius: 16px;
+}
+
+.post p{
+    padding: 14px;
+}
+
+.postTitle{
+    background: var(--secondary);
+    color: var(--white);
+    margin: 0;
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    font-size: 24px;
+    border-radius: 12px;
+}
+
+.postTitle p,
+.dashPost div p,
+.commentSection p{
+    padding: 12px;
+}
+
+.dashPost{
+    font-size: 24px;
+    color: var(--white);
+    background: var(--secondary);
+    margin: 24px;
+}
+
+.dashPost div{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+    border: 3px solid var(--white);
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.commentSection{
+    background: var(--primary);
+    color: var(--white);
+    font-size: 16px;
+    border: 3px solid var(--white);
+    margin: 24px;
+    border-radius: 16px;
+}
+
+.commentHeader{
+    display: inline-flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#comment-btn{
+    background: var(--primary);
+    font-size: 28px;
+    color: var(--white);
+    border: 5px solid var(--white);
+    border-radius: 12px;
+}
+
+#commentInput{
+    margin-right: 24px;
+    width: 20%;
+    height: 20%;
+    background: var(--primary);
+    color: var(--white);
+}
+
+#commentSection button{
+    background: var(--primary);
+    font-size: 28px;
+    color: var(--white);
+    border: 5px solid var(--white);
+    border-radius: 12px;
+}

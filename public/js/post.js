@@ -1,12 +1,13 @@
 const onClickAddComment = (event) => {
   event.preventDefault();
-  const input = document.createElement("INPUT");
-  input.setAttribute("type", "text");
+  const hideBtn = document.getElementById('comment-btn');
+  hideBtn.classList.add('hidden');
+  const input = document.createElement("TEXTAREA");
   input.setAttribute("id", "commentInput");
   const btn = document.createElement("button");
-  btn.innerHTML = "Save Comment";
+  btn.innerHTML = "Comment";
   btn.onclick = submitComment;
-  const post = document.getElementById("post");
+  const post = document.getElementById("commentSection");
   post.appendChild(input);
   post.appendChild(btn);
 };
