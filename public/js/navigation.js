@@ -1,11 +1,11 @@
-const loginFormHandler = async (event) => {
+const goToLogin = async (event) => {
     event.preventDefault();
     document.location.replace('/login');
   };
   
 const loginButton = document.getElementById('login-nav');
 if (loginButton) {
-  loginButton.addEventListener('click', loginFormHandler);
+  loginButton.addEventListener('click', goToLogin);
 };
  
     const goToHomePage = async (event) => {
