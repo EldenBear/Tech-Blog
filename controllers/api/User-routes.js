@@ -1,26 +1,28 @@
-const router = require('express').Router();
-const User = require('../../models/User');
+const router = require("express").Router();
+const User = require("../../models/User");
 
-router.post('/', async (req, res) => {
-  try { 
+router.post("/", async (req, res) => {
+  try {
     const userData = await User.create({
-    userName: req.body.userName,
-    password: req.body.password,
-  });
-  res.status(200).json(userData)
-} catch (err) {
-  res.status(400).json(err);
-}
+      userName: req.body.userName,
+      password: req.body.password,
+    });
+    res.status(200).json(userData);
+  } catch (err) {
+    res.status(400).json(err);
+  }
 });
 
-router.post('/login', async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { userName: req.body.userName } });
+    const userData = await User.findOne({
+      where: { userName: req.body.userName },
+    });
 
     if (!userData) {
       res
         .status(400)
-        .json({ message: 'Incorrect Username or password, please try again' });
+        .json({ message: "Incorrect Username or password, please try again" });
       return;
     }
 
@@ -29,33 +31,31 @@ router.post('/login', async (req, res) => {
     if (!validPassword) {
       res
         .status(400)
-        .json({ message: 'Incorrect Username or password, please try again' });
+        .json({ message: "Incorrect Username or password, please try again" });
       return;
     }
 
     req.session.save(() => {
       req.session.user_id = userData.id;
       req.session.logged_in = true;
-      
-      res.json({ user: userData, message: 'You are now logged in!' });
-    });
 
+      res.json({ user: userData, message: "You are now logged in!" });
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post('/createNewAccount', async (req, res) => {
+router.post("/createNewAccount", async (req, res) => {
   try {
-    const userData = await User.findOne({ where: { userName: req.body.userName } });
+    const userData = await User.findOne({
+      where: { userName: req.body.userName },
+    });
 
     if (userData) {
-      res
-        .status(400)
-        .json({ message: 'Invalid user name' });
+      res.status(400).json({ message: "Invalid user name" });
       return;
     }
-
 
     const newUser = await User.create({
       userName: req.body.userName,
@@ -65,16 +65,15 @@ router.post('/createNewAccount', async (req, res) => {
     req.session.save(() => {
       req.session.user_id = newUser.id;
       req.session.logged_in = true;
-      
-      res.json({ user: newUser, message: 'You are now logged in!' });
-    });
 
+      res.json({ user: newUser, message: "You are now logged in!" });
+    });
   } catch (err) {
     res.status(400).json(err);
   }
 });
 
-router.post('/logout', (req, res) => {
+router.post("/logout", (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();

@@ -1,12 +1,12 @@
 const router = require("express").Router();
 const Comment = require("../../models/Comment");
-const User = require('../../models/User');
+const User = require("../../models/User");
 
 router.post("/", async (req, res) => {
   try {
     const date = new Date();
-    const dateString = date.toISOString().split('T')[0];
-    const user = await User.findOne({ where: { id: req.session.user_id }});
+    const dateString = date.toISOString().split("T")[0];
+    const user = await User.findOne({ where: { id: req.session.user_id } });
     const commentData = await Comment.create({
       contents: req.body.comment,
       userName: user.userName,
@@ -21,4 +21,3 @@ router.post("/", async (req, res) => {
 });
 
 module.exports = router;
-
