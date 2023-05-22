@@ -6,6 +6,12 @@
 <p>{{post.date}}</p>
 </div>
 <p id="postId">{{post.id}}</p>
+{{#each comments as |comment|}}
+<p>{{comment.contents}}</p>
+<p>{{comment.userName}}</p>
+<p>{{comment.date}}</p>
+{{/each}}
+{{#if logged_in}}
 <button class="btn" id="comment-btn">+Comment</button>
-
+{{/if}}
 <script src="/js/post.js"></script>

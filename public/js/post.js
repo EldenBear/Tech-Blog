@@ -30,6 +30,9 @@ if (comment) {
 } 
 };
 
-document
-.getElementById('comment-btn')
-.addEventListener('click' , onClickAddComment);
+const addCommentButton = document
+.getElementById('comment-btn');
+if (addCommentButton) {
+    addCommentButton
+    .addEventListener('click' , onClickAddComment);
+};

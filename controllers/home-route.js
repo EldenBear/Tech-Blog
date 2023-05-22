@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const Post = require('../models/Post');
+const Comment = require('../models/Comment');
 
 router.get('/', async (req, res) => {
     const postData = await Post.findAll().catch((err) => { 
@@ -19,8 +20,11 @@ router.get('/', async (req, res) => {
             res.status(404).json({message: 'No post with this id!'});
             return;
         }
+        const commentData = await Comment.findAll({where: { postId: req.params.id}});
+        const comments = commentData.map((comment) => comment.get({ plain: true})); 
         const post = postData.get({ plain: true });
-        res.render('post', {post,  logged_in: req.session.logged_in,});
+        console.log(post);
+        res.render('post', {post,  logged_in: req.session.logged_in, comments});
       } catch (err) {
           res.status(500).json(err);
       };     
