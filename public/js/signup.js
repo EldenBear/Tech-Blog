@@ -16,7 +16,7 @@ const createNewAccount = async (event) => {
     if (response.ok) {
       document.location.replace("/");
     } else {
-      alert("Failed to log in");
+      alert("Failed to create account! Make sure password is at least 8 characters in length!");
     }
   }
 };

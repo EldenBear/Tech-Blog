@@ -6,6 +6,10 @@
 
 }
 
+*{
+    font-family: 'Kanit', sans-serif;
+}
+
 .hidden{
     display: none;
 }
@@ -54,6 +58,10 @@ h1{
     border-radius: 16px;
 }
 
+#postId{
+    display: none;
+}
+
 .post p{
     padding: 14px;
 }
@@ -91,6 +99,15 @@ h1{
     cursor: pointer;
 }
 
+#createPostButton{
+    background: var(--primary);
+    font-size: 28px;
+    color: var(--white);
+    border: 5px solid var(--white);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
 .commentSection{
     background: var(--primary);
     color: var(--white);
@@ -112,6 +129,7 @@ h1{
     color: var(--white);
     border: 5px solid var(--white);
     border-radius: 12px;
+    cursor: pointer;
 }
 
 #commentInput{
@@ -128,4 +146,80 @@ h1{
     color: var(--white);
     border: 5px solid var(--white);
     border-radius: 12px;
+}
+
+#titleEdit{
+    font-size: 24px;
+    background: var(--secondary);
+    color: var(--white);
+    outline-style: outset;
+    border-radius: 12px;
+}
+
+#commentEdit{
+    font-size: 16px;
+    height: 25%;
+    background: var(--primary);
+    color: var(--white);
+    outline-style: outset;
+    border-radius: 12px;
+    resize: none;
+}
+
+#commentEdit,
+#titleEdit{
+    margin-right: 24px;
+    width: 33%;
+}
+
+#titleCommentEdit{
+    background: var(--secondary);
+    border-radius: 12px;
+}
+
+#edit-btn,
+#delete-btn{
+    background: var(--primary);
+    font-size: 28px;
+    color: var(--white);
+    border: 5px solid var(--white);
+    border-radius: 12px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+
+#inputForm{
+    border: 5px solid var(--white);
+    background: var(--primary);
+    display: inline-block;
+}
+
+#loginText,
+#signUpText{
+    color: var(--white);
+    padding: 12px;
+}
+
+#sign-up-btn,
+#login-btn{
+    background: var(--primary);
+    font-size: 28px;
+    color: var(--white);
+    border: 5px solid var(--white);
+    border-radius: 12px;
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+#info{
+    color: var(--white);
+    font-size: 24px;
+    padding-left: 8px;
+}
+
+.form-group{
+    font-size: 38px;
+    color: var(--white);
+    padding: 12px;
 }

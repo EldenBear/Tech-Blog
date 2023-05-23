@@ -24,10 +24,11 @@ router.put("/:id", async (req, res) => {
   try {
     const date = new Date();
     const dateString = date.toISOString().split("T")[0];
+    console.log(req);
     const post = await Post.update(
       {
         title: req.body.titleEdit,
-        contents: req.body.contentEdit,
+        contents: req.body.commentEdit,
         date: dateString,
       },
       {

@@ -1,13 +1,13 @@
 const editPost = async (event) => {
   event.preventDefault();
   const titleEdit = document.getElementById("titleEdit").value.trim();
-  const contentEdit = document.getElementById("contentEdit").value.trim();
+  const commentEdit = document.getElementById("commentEdit").value;
   const postId = document.getElementById("postId").innerHTML;
 
-  if (titleEdit && contentEdit) {
+  if (titleEdit && commentEdit) {
     const response = await fetch(`/api/post/${postId}`, {
       method: "PUT",
-      body: JSON.stringify({ titleEdit, contentEdit }),
+      body: JSON.stringify({ titleEdit, commentEdit }),
       headers: { "Content-Type": "application/json" },
     });
 

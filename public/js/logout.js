@@ -5,10 +5,10 @@ const logout = async () => {
   }).catch((err) => console.log(err));
 
   if (response.ok) {
-    document.location.replace("/login");
+    document.location.replace("/");
   } else {
     alert("Failed to log out");
   }
 };
 
-document.querySelector("#logout").addEventListener("click", logout);
+document.getElementById("logout-nav").addEventListener("click", logout);
