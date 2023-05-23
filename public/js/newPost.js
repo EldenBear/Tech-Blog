@@ -1,3 +1,4 @@
+ /*Allows user to create a new post with a title and content of said post*/
 const createPost = async (event) => {
   event.preventDefault();
   const postTitle = document.getElementById("newTitle").value.trim();
@@ -9,7 +10,7 @@ const createPost = async (event) => {
       body: JSON.stringify({ postTitle, postContent }),
       headers: { "Content-Type": "application/json" },
     });
-
+ /*Returns user to dashboard to see their new post or alerts them it failed to create the post*/
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {

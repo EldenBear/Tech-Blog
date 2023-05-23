@@ -1,3 +1,4 @@
+ /*Allows user to click add comment*/
 const onClickAddComment = (event) => {
   event.preventDefault();
   const hideBtn = document.getElementById('comment-btn');
@@ -11,7 +12,7 @@ const onClickAddComment = (event) => {
   post.appendChild(input);
   post.appendChild(btn);
 };
-
+ /*Allows user to submit comment onto post*/
 const submitComment = async (event) => {
   event.preventDefault();
   const comment = document.getElementById("commentInput").value.trim();

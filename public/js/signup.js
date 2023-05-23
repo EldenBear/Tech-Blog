@@ -1,3 +1,4 @@
+ /*User creates new account*/
 const createNewAccount = async (event) => {
   event.preventDefault();
 
@@ -12,7 +13,7 @@ const createNewAccount = async (event) => {
     }).catch((err) => {
       console.log(err);
     });
-
+ /*Takes user to home page or throws error alert depending on outcome*/
     if (response.ok) {
       document.location.replace("/");
     } else {

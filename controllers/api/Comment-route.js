@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Comment = require("../../models/Comment");
 const User = require("../../models/User");
-
+ /*Post for comment*/ 
 router.post("/", async (req, res) => {
   try {
     const date = new Date();

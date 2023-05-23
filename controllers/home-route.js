@@ -2,7 +2,7 @@ const router = require("express").Router();
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
 const dayjs = require("dayjs");
-
+ /*Gets all posts*/ 
 router.get("/", async (req, res) => {
   const postData = await Post.findAll().catch((err) => {
     res.json(err);
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     logged_in: req.session.logged_in,
   });
 });
-
+ /*Gets post by id*/ 
 router.get("/post/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);

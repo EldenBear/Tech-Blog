@@ -10,7 +10,7 @@ const editPost = async (event) => {
       body: JSON.stringify({ titleEdit, commentEdit }),
       headers: { "Content-Type": "application/json" },
     });
-
+ /*Takes you to dashboard after post edit or throws alert that post failed to update*/
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
@@ -18,7 +18,7 @@ const editPost = async (event) => {
     }
   }
 };
-
+ /*Allows user to delete post*/
 const deletePost = async (event) => {
   event.preventDefault();
   const postId = document.getElementById("postId").innerHTML;
@@ -26,6 +26,7 @@ const deletePost = async (event) => {
     method: "DELETE",
     headers: { "Content-Type": "application/json" },
   });
+   /*Returns user to dashboard after delete or throws alert that the delete failed*/
   if (response.ok) {
     document.location.replace("/dashboard");
   } else {

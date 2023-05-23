@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const Post = require("../../models/Post");
 const User = require("../../models/User");
-
+ /*Posts postData and user name/date*/ 
 router.post("/", async (req, res) => {
   try {
     const date = new Date();
@@ -42,7 +42,7 @@ router.put("/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+ /*Post deletion*/ 
 router.delete("/:id", async (req, res) => {
   try {
     await Post.destroy({

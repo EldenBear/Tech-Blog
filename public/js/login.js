@@ -1,6 +1,6 @@
 const loginFormHandler = async (event) => {
   event.preventDefault();
-
+ /*gets users input for username and password*/
   const userName = document.querySelector("#user-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
 
@@ -10,7 +10,7 @@ const loginFormHandler = async (event) => {
       body: JSON.stringify({ userName, password }),
       headers: { "Content-Type": "application/json" },
     });
-
+ /*redirects user to home page on succesful login or throws up an alert that they failed to log in*/
     if (response.ok) {
       document.location.replace("/");
     } else {
@@ -18,7 +18,7 @@ const loginFormHandler = async (event) => {
     }
   }
 };
-
+ /*Allows clicking sign up to take you to signup page*/
 const createNewAccount = async (event) => {
   event.preventDefault();
   document.location.replace("/signup");

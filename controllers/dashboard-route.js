@@ -1,7 +1,7 @@
 const router = require("express").Router();
 const dayjs = require("dayjs");
 const Post = require("../models/Post");
-
+ /*Gets all posts from signed in user*/ 
 router.get("/", async (req, res) => {
   const postData = await Post.findAll({
     where: {
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
   });
   res.render("dashboard", { posts, logged_in: req.session.logged_in });
 });
-
+ /*Allows user to edit post bu the id*/ 
 router.get("/edit/:id", async (req, res) => {
   try {
     const postData = await Post.findByPk(req.params.id);
@@ -39,7 +39,7 @@ router.get("/edit/:id", async (req, res) => {
     res.status(500).json(err);
   }
 });
-
+ /*Allows user to add new post*/ 
 router.get("/add", async (req, res) => {
   try {
     res.render("newPost", { logged_in: req.session.logged_in });
