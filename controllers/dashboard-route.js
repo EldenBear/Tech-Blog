@@ -29,6 +29,9 @@ router.get("/edit/:id", async (req, res) => {
       return;
     }
     const postUnformatted = postData.get({ plain: true });
+    if (postUnformatted.userId !== req.session.user_id) {
+      res.redirect('/');
+    }
     const day = dayjs(postUnformatted.date);
     const post =  {
       ...postUnformatted,
