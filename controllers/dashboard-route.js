@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const dayjs = require("dayjs");
 const Post = require("../models/Post");
 
 router.get("/", async (req, res) => {
@@ -9,7 +10,14 @@ router.get("/", async (req, res) => {
   }).catch((err) => {
     res.json(err);
   });
-  const posts = postData.map((post) => post.get({ plain: true }));
+  const postsUnformated = postData.map((post) => post.get({ plain: true }));
+  const posts = postsUnformated.map((post) => {
+    const day = dayjs(post.date);
+    return {
+      ...post,
+      date: day.format('MM/DD/YYYY')
+    }
+  });
   res.render("dashboard", { posts, logged_in: req.session.logged_in });
 });
 
@@ -20,7 +28,12 @@ router.get("/edit/:id", async (req, res) => {
       res.status(404).json({ message: "No post with this id!" });
       return;
     }
-    const post = postData.get({ plain: true });
+    const postUnformatted = postData.get({ plain: true });
+    const day = dayjs(postUnformatted.date);
+    const post =  {
+      ...postUnformatted,
+      date: day.format('MM/DD/YYYY')
+    }
     res.render("edit", { post, logged_in: req.session.logged_in });
   } catch (err) {
     res.status(500).json(err);

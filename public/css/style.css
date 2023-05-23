@@ -106,6 +106,7 @@ h1{
     border: 5px solid var(--white);
     border-radius: 12px;
     cursor: pointer;
+    margin-left: 24px;
 }
 
 .commentSection{
@@ -130,6 +131,7 @@ h1{
     border: 5px solid var(--white);
     border-radius: 12px;
     cursor: pointer;
+    margin-left: 24px;
 }
 
 #commentInput{
@@ -178,7 +180,8 @@ h1{
 }
 
 #edit-btn,
-#delete-btn{
+#delete-btn,
+#create-btn{
     background: var(--primary);
     font-size: 28px;
     color: var(--white);

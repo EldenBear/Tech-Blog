@@ -1,12 +1,20 @@
 const router = require("express").Router();
 const Post = require("../models/Post");
 const Comment = require("../models/Comment");
+const dayjs = require("dayjs");
 
 router.get("/", async (req, res) => {
   const postData = await Post.findAll().catch((err) => {
     res.json(err);
   });
-  const posts = postData.map((post) => post.get({ plain: true }));
+  const postsUnformated = postData.map((post) => post.get({ plain: true }));
+  const posts = postsUnformated.map((post) => {
+    const day = dayjs(post.date);
+    return {
+      ...post,
+      date: day.format('MM/DD/YYYY')
+    }
+  });
   res.render("homepage", {
     posts,
     logged_in: req.session.logged_in,
@@ -23,9 +31,20 @@ router.get("/post/:id", async (req, res) => {
     const commentData = await Comment.findAll({
       where: { postId: req.params.id },
     });
-    const comments = commentData.map((comment) => comment.get({ plain: true }));
-    const post = postData.get({ plain: true });
-    console.log(post);
+    const commentsUnformatted = commentData.map((comment) => comment.get({ plain: true }));
+    const comments = commentsUnformatted.map((comment) => {
+      const day = dayjs(comment.date);
+      return {
+        ...comment,
+        date: day.format('MM/DD/YYYY')
+      }
+    });
+    const postUnformatted = postData.get({ plain: true });
+    const day = dayjs(postUnformatted.date);
+    const post =  {
+      ...postUnformatted,
+      date: day.format('MM/DD/YYYY')
+    }
     res.render("post", { post, logged_in: req.session.logged_in, comments });
   } catch (err) {
     res.status(500).json(err);
